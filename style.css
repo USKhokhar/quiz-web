@@ -49,9 +49,13 @@
 :root {
     --dark-clr: #2A2D34;
     --orange-clr: #F26430;
+    --orange-clr-x: #c53400;
     --light-clr: #F2EDEB;
+    --light-clr-x: #b1aeac;
     --blue-clr: #645DD7;
+    --blue-clr-x: #635dd7a2;
     --green-clr: #43C59E;
+    --green-clr-x: #00a271;
 
     --inter: 'Inter', sans-serif;
     --poppins: 'Poppins', sans-serif;
@@ -84,8 +88,65 @@ header {
     color: var(--dark-clr);
 }
 
+/* FOOTER */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--blue-clr);
+    height: 15vh;
+}
+
+/* BUTTONS */
+
+.ctrl-btn {
+    border: none;
+    padding: 0.5rem 1rem;
+    width: 20%;
+    min-width: 8rem;
+    text-transform: uppercase;
+    font: normal 600 1rem/1rem var(--poppins);
+    letter-spacing: 0.15rem;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.previous-btn {
+    background: var(--dark-clr);
+    color: var(--light-clr);
+}
+
+.previous-btn:hover {
+    color: var(--light-clr-x);
+}
+
+.mark-btn {
+    background: var(--orange-clr);
+    color: var(--light-clr);
+}
+
+.mark-btn:hover {
+    background: var(--orange-clr-x);
+}
+
+.clear-btn:hover {
+    background: var(--light-clr-x);
+}
+
+.next-btn {
+    background: var(--green-clr);
+    color: var(--light-clr);
+}
+
+.next-btn:hover {
+    background: var(--green-clr-x);
+}
+
 /* ICONS */
 .exit-btn {
     transform: scale(1.5);
     color: var(--light-clr);
+    cursor: pointer;
 }
