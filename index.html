@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6f6202b98e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
     <title>The Flag Quiz</title>
-</head>
+</head> 
 <body>
     <!-- Header -->
     <header class="flex j-between a-center">
         <h1>Quizzie</h1>
         <div class="timer flex j-center a-center">
             <h3>
+                <i class="fa-regular fa-clock"></i>
                 <span class="minute">10</span>
                 :
                 <span class="seconds">00</span>
@@ -83,8 +85,25 @@
 
             <button class="submit ctrl-btn">Submit</button>
         </section>
-    </main>
 
+    </main>
+    
+    <!-- MODALS -->
+    
+    <section class="start-modal">
+        <h2>instructions</h2>
+        <sub>!! Welcome to the Quizzie !!</sub>
+        <ul class="inst-list">
+            <li>This quiz contains 10 questions which are to be done in 10 minutes.</li>
+            <li>You can mark any question to attempt it later in the quiz time.</li>
+            <li>You can navigate through question from the question score card.</li>
+            <li>You can quit the quiz anytime in the middle of quiz.</li>
+            <li>Once the timer is over, you will be redirected to finish page automatically.</li>
+        </ul>
+        <sub>!! All The Best !!</sub>
+        <button class="start-btn">start</button>
+    </section>
+    
     <!-- FOOTER -->
     <footer class="flex wrap j-around a-center">
         <button class="ctrl-btn previous-btn">previous</button>
