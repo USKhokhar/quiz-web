@@ -46,6 +46,12 @@
     font-size: 16px;
 }
 
+@media screen and (max-width: 600px) {
+    * {
+        font-size: 14px;
+    }
+}
+
 :root {
     --dark-clr: #2A2D34;
     --orange-clr: #F26430;
@@ -83,6 +89,7 @@ h1 {
     border: 0.05rem solid var(--dark-clr);
     aspect-ratio: 1;
     cursor: pointer;
+    padding: 1rem;
 }
 
 .number:hover {
@@ -171,11 +178,12 @@ main {
 }
 
 .answer-container {
-    margin-top: 5rem;
+    margin-top: 4rem;
     gap: 1rem;
 }
 
 /* SCORECARD DISPLAY */
+
 
 #score-display {
     display: flex;
@@ -188,28 +196,37 @@ main {
     padding: 2rem 1rem;
 }
 
-.open {
+.open,
+.close {
     display: none;
 }
+
 
 @media screen and (max-width: 660px) {
     #score-display {
         display: none;
+        border: none;
     }
 
     #ques-display {
         position: relative;
     }
 
-    .open {
-        display: block;
+    .open,
+    .close {
         position: absolute;
         top: 5rem;
     }
+
+    .open {
+        display: block;
+    }
+
 }
 
+
 .number-card {
-    grid-template-columns: repeat(5, 3rem);
+    grid-template-columns: repeat(5, 5fr);
     gap: 1rem;
 }
 
@@ -252,6 +269,7 @@ footer {
 .y-btn,
 .start-btn,
 .ctrl-btn,
+.close,
 .open {
     border: none;
     padding: 1rem 0;
@@ -265,11 +283,16 @@ footer {
 }
 
 .start-btn,
-.open {
+.open,
+.close {
     width: max-content;
     background-color: var(--blue-clr);
     padding: 0.5rem 1rem;
     color: var(--light-clr);
+}
+
+.close {
+    background: var(--orange-clr-x);
 }
 
 .y-btn:hover,
@@ -293,10 +316,17 @@ footer {
 }
 
 /* .start-btn:hover, */
-.open:hover {
+.open:hover,
+    {
     background: var(--light-clr);
     border: 0.08rem solid var(--blue-clr);
     color: var(--blue-clr);
+}
+
+.close:hover {
+    background: var(--light-clr);
+    border: 0.08rem solid var(--orange-clr);
+    color: var(--orange-clr-x);
 }
 
 .previous-btn {
@@ -339,6 +369,7 @@ footer {
     font: normal 500 1.5rem/1rem var(--mont);
     color: var(--dark-clr);
     border: 0.05rem solid var(--dark-clr);
+    border-radius: 8px;
     cursor: pointer;
     transition: 300ms;
 }
@@ -391,4 +422,11 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* IMAGES */
+.ques-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    margin: auto;
 }

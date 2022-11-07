@@ -12,7 +12,7 @@
 <body>
     <!-- Header -->
     <header class="flex j-between a-center">
-        <h1>Quizzie</h1>
+        <h1>Flag Quiz</h1>
         <div class="timer flex j-center a-center">
             <h3>
                 <i class="fa-regular fa-clock"></i>
@@ -30,12 +30,16 @@
             <i class="fa-solid fa-sliders"></i>
             DETAILS PANEL
         </button>
+        <button class="close">
+            <i class="fa-solid fa-xmark"></i>
+            CLOSE
+        </button>
 
         <!-- QUESTION DISPLAY -->
         <section id="ques-display">
             <fieldset class="ques-container">
                 <p class="ques">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quibusdam veniam quisquam, praesentium quis itaque nobis numquam est nihil laboriosam.
+                    <img alt="question_image" class="ques-image" src="https://countryflagsapi.com/png/in">
                 </p>
                 <legend class="ques-number">1</legend>
             </fieldset>
@@ -93,7 +97,8 @@
         <h2>instructions</h2>
         <sub>!! Welcome to the Quizzie !!</sub>
         <ul class="inst-list">
-            <li>This quiz contains 10 questions which are to be done in 10 minutes.</li>
+            <li>In question, is given the flag of a country and you have to chose the corresponding country from the options.</li>
+            <li>This quiz contains 10 questions which are to be done in 5 minutes.</li>
             <li>You can mark any question to attempt it later in the quiz time.</li>
             <li>You can navigate through question from the question score card.</li>
             <li>You can quit the quiz anytime in the middle of quiz.</li>
