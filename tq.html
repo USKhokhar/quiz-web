@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Finished</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        body{
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            background: #635dd786;
+        }
+
+        h1{
+            font: normal 500 2rem/2.5rem 'Poppins', sans-serif;
+            text-transform: capitalize;
+        }
+        sub{
+            font: italic 300 1.5rem/1rem 'Inter', sans-serif;
+        }
+
+        button{
+            width: 10rem;
+            padding: 0.8rem 0;
+            border: none;
+            cursor: pointer;
+            transition: 300ms;
+            box-shadow: 4px 4px rgba(51, 51, 51, 0.795);
+            font: normal 300 1.2rem/1rem 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        button:active{
+            box-shadow: none;
+            transform: translate(4px, 4px);
+        }
+
+        .retake{
+            background: #3c3886;
+        }
+        
+        .retake:hover{
+            background: #645DD7;
+        }
+
+        .close{
+            background: #c53400;
+        }
+
+        .close:hover{
+            background: #F26430;
+        }
+    </style>
+</head>
+<body>
+    <h1>thank you for taking the quiz!</h1>
+    <sub>see you again...</sub>
+    <button class="retake">retake</button>
+    <button class="close">close</button>
+
+    <script>
+        const retakeBtn = document.querySelector('.retake');
+        const closeBtn = document.querySelector('.close');
+
+        retakeBtn.addEventListener('click', () => {
+            window.location.replace("./index.html");
+        });
+
+        closeBtn.addEventListener('click', () => {
+            window.close();
+        })
+    </script>
+</body>
+</html>
