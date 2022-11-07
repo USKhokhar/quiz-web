@@ -248,6 +248,8 @@ footer {
 
 /* BUTTONS */
 
+.n-btn,
+.y-btn,
 .start-btn,
 .ctrl-btn,
 .open {
@@ -270,9 +272,24 @@ footer {
     color: var(--light-clr);
 }
 
+.y-btn:hover,
 .start-btn:hover {
     transition: 150ms;
     background: var(--blue-clr-x);
+}
+
+.y-btn {
+    background: var(--blue-clr);
+    color: var(--light-clr);
+}
+
+.n-btn {
+    border: 0.08rem solid var(--orange-clr);
+}
+
+.n-btn:hover {
+    transition: 300ms;
+    background: var(--light-clr-x);
 }
 
 /* .start-btn:hover, */
@@ -359,7 +376,7 @@ footer {
 
 /* MODALS */
 
-.start-modal {
+.modal {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -16,9 +16,7 @@
         <div class="timer flex j-center a-center">
             <h3>
                 <i class="fa-regular fa-clock"></i>
-                <span class="minute">10</span>
-                :
-                <span class="seconds">00</span>
+                <span class="counter"></span>
             </h3>
         </div>
         <i class="fa-solid fa-arrow-right-from-bracket exit-btn"></i>
@@ -90,7 +88,8 @@
     
     <!-- MODALS -->
     
-    <section class="start-modal">
+    <!-- start modal -->
+    <section class="modal start-modal"> 
         <h2>instructions</h2>
         <sub>!! Welcome to the Quizzie !!</sub>
         <ul class="inst-list">
@@ -102,6 +101,14 @@
         </ul>
         <sub>!! All The Best !!</sub>
         <button class="start-btn">start</button>
+    </section>
+
+    <!-- exit confirmation modal -->
+    <section class="modal exit-modal">
+        <h2>exit</h2>
+        <sub>Are you sure you want to leave the quiz?</sub>
+        <button class="y-btn">yes</button>
+        <button class="n-btn">no</button>
     </section>
     
     <!-- FOOTER -->
