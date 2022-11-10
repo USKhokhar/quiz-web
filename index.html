@@ -41,14 +41,22 @@
                 <p class="ques">
                     <img alt="question_image" class="flag" src="">
                 </p>
-                <legend class="ques-number">1</legend>
+                <legend class="ques-number"></legend>
             </fieldset>
 
             <article class="answer-container grid">
-                <button class="answer-btn a">A</button>
-                <button class="answer-btn b">B</button>
-                <button class="answer-btn c">C</button>
-                <button class="answer-btn d">D</button>
+                <input type="radio" class="radio-btn" name="option" id="opt-a">
+                <label for="opt-a" class="answer-btn flex j-center a-center a"></label>
+        
+                <input type="radio" class="radio-btn" name="option" id="opt-b">
+                <label for="opt-b" class="answer-btn flex j-center a-center b"></label>
+        
+                <input type="radio" class="radio-btn" name="option" id="opt-c">
+                <label for="opt-c" class="answer-btn flex j-center a-center c"></label>
+        
+                <input type="radio" class="radio-btn" name="option" id="opt-d">
+                <label for="opt-d" class="answer-btn flex j-center a-center d"></label>
+        
             </article>
         </section>
 
@@ -82,6 +90,11 @@
                     <div class="mk ball"></div>
                     <h4>marked</h4>
                     <h6 class="mk-count">--</h6>
+                </article>
+                <article class="flex row j-between a-center">
+                    <div class="ball"></div>
+                    <h4><strong>total</strong></h4>
+                    <h6 class="mk-count">10</h6>
                 </article>
             </div>
 

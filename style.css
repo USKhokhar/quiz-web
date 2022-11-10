@@ -102,6 +102,7 @@ h1 {
 
 h4,
 h6 {
+    text-transform: uppercase;
     font: normal 400 1rem/1.2rem var(--mont);
     color: var(--dark-clr);
 }
@@ -280,6 +281,7 @@ footer {
     letter-spacing: 0.15rem;
     cursor: pointer;
     transition: 300ms;
+    border-radius: 8px;
 }
 
 .start-btn,
@@ -379,7 +381,11 @@ footer {
     color: var(--light-clr);
 }
 
-.selected {
+input[type='radio'] {
+    display: none;
+}
+
+input[type='radio']:checked+label {
     background: var(--dark-clr);
     border: none;
     color: var(--light-clr);
@@ -429,4 +435,28 @@ footer {
     width: 100%;
     aspect-ratio: 16/9;
     margin: auto;
+}
+
+/* JS CLASSES */
+
+.marked,
+.attempted,
+.skipped {
+    color: var(--light-clr);
+    font-weight: 500;
+    border-radius: 50%;
+    border: none;
+    transform: scale(1.1);
+}
+
+.marked {
+    background: var(--orange-clr);
+}
+
+.attempted {
+    background: var(--green-clr);
+}
+
+.skipped {
+    background: var(--orange-clr-x);
 }

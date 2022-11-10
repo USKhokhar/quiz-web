@@ -105,7 +105,12 @@ const optA = document.querySelector('.a');
 const optB = document.querySelector('.b');
 const optC = document.querySelector('.c');
 const optD = document.querySelector('.d');
-let quesIndex;
+const quesNumber = document.querySelector('.ques-number');
+let quesIndex = 0;
+
+// SCORECARD
+
+const numberEl = document.querySelectorAll('.number');
 
 // timer elements
 const counterJs = document.querySelector('.counter');
@@ -122,6 +127,8 @@ const noBtn = document.querySelector('.n-btn');
 const openScoreBtn = document.querySelector('.open');
 const closeScoreBtn = document.querySelector('.close');
 const answerBtn = document.querySelectorAll('.answer-btn');
+const ctrlBtns = document.querySelectorAll('.ctrl-btn');
+const radioBtn = document.querySelectorAll('.radio-btn');
 
 // timer
 const startTime = 5;
@@ -170,8 +177,7 @@ startBtn.addEventListener('click', () => {
     mainJs.style.opacity = '1';
     startModal.style.display = 'none';
     setInterval(updateCounter, 1000);
-
-    quesIndex = Math.floor(Math.random() * 9);
+    quesIndex = 0;
     setQues(quesIndex);
 });
 
@@ -190,10 +196,48 @@ yesBtn.addEventListener('click', () => {
     window.location.replace("./tq.html");
 })
 
+
 const setQues = (e) => {
-    flagEl.src = questions[e].flag
     optA.innerHTML = questions[e].answer[0].option;
     optB.innerHTML = questions[e].answer[1].option;
     optC.innerHTML = questions[e].answer[2].option;
     optD.innerHTML = questions[e].answer[3].option;
+    flagEl.src = questions[e].flag
+    quesNumber.innerHTML = e + 1;
 }
+
+// NAVIGATING THROUGH PAGE
+
+ctrlBtns.forEach(btn => btn.addEventListener('click', () => {
+    if(btn.classList.contains('next-btn')){
+        quesIndex++
+        if(quesIndex > 9){
+            quesIndex = 9;
+        }
+        radioBtn.checked = false;
+        setQues(quesIndex);
+    }
+    if(btn.classList.contains('previous-btn')){
+        quesIndex--;
+        if(quesIndex < 0){
+            quesIndex = 0;
+        }
+        setQues(quesIndex);
+    }
+    if(btn.classList.contains('mark-btn')){
+        numberEl[quesNumber.innerHTML-1].classList.add('marked');
+    }
+    if(btn.classList.contains('clear-btn')){
+        
+    }
+}))
+
+// OPTIONS
+
+
+// SCORECARD
+
+numberEl.forEach(btn => btn.addEventListener('click', () => {
+    setQues(btn.innerHTML-1);
+    quesNumber.innerHTML = btn.innerHTML
+}))
