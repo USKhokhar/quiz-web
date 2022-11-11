@@ -109,8 +109,14 @@ const quesNumber = document.querySelector('.ques-number');
 let quesIndex = 0;
 
 // SCORECARD
-
+const mkCount = document.querySelector('.mk-count');
+const naCount = document.querySelector('.na-count');
+const attCount = document.querySelector('.att-count');
 const numberEl = document.querySelectorAll('.number');
+
+mkCount.innerHTML = 0
+naCount.innerHTML = 0
+attCount.innerHTML = 0
 
 // timer elements
 const counterJs = document.querySelector('.counter');
@@ -129,6 +135,8 @@ const closeScoreBtn = document.querySelector('.close');
 const answerBtn = document.querySelectorAll('.answer-btn');
 const ctrlBtns = document.querySelectorAll('.ctrl-btn');
 const radioBtn = document.querySelectorAll('.radio-btn');
+const labelEl = document.querySelectorAll('label');
+const submitBtn = document.querySelector('.submit');
 
 // timer
 const startTime = 5;
@@ -143,13 +151,6 @@ updateCounter = () => {
     if(second < 10){
         counterJs.innerHTML = `0${minute} : 0${second}`;
     }
-
-    // if(minute === -1){
-    //     counterJs.innerHTML = `00 : 00`;
-    //     clearInterval(updateCounter);
-    //     window.location.replace('./tq.html');
-    // }
-
     totalTime--;
 }
 
@@ -196,6 +197,9 @@ yesBtn.addEventListener('click', () => {
     window.location.replace("./tq.html");
 })
 
+submitBtn.addEventListener('click', () => {
+    window.location.replace("./tq.html");
+})
 
 const setQues = (e) => {
     optA.innerHTML = questions[e].answer[0].option;
@@ -214,7 +218,15 @@ ctrlBtns.forEach(btn => btn.addEventListener('click', () => {
         if(quesIndex > 9){
             quesIndex = 9;
         }
-        radioBtn.checked = false;
+        if(!numberEl[quesNumber.innerHTML-1].classList.contains('marked')){
+            numberEl[quesNumber.innerHTML-1].classList.add('skipped');
+        }
+        if(numberEl[quesNumber.innerHTML-1].classList.contains('marked')){
+            mkCount.innerHTML++;
+        }
+        if(numberEl[quesNumber.innerHTML-1].classList.contains('skipped')){
+            naCount.innerHTML++;
+        }
         setQues(quesIndex);
     }
     if(btn.classList.contains('previous-btn')){
@@ -228,7 +240,9 @@ ctrlBtns.forEach(btn => btn.addEventListener('click', () => {
         numberEl[quesNumber.innerHTML-1].classList.add('marked');
     }
     if(btn.classList.contains('clear-btn')){
-        
+        numberEl[quesNumber.innerHTML-1].classList.remove('marked');
+        numberEl[quesNumber.innerHTML-1].classList.remove('attempted');
+        numberEl[quesNumber.innerHTML-1].classList.remove('skipped');
     }
 }))
 
