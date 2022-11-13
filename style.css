@@ -277,7 +277,7 @@ footer {
 .open {
     border: none;
     padding: 1rem 0;
-    width: 20%;
+    width: 15%;
     min-width: 8rem;
     text-transform: uppercase;
     font: normal 600 1rem/1rem var(--poppins);
@@ -396,8 +396,7 @@ input[type='radio']:checked+label {
 .submit {
     background: var(--dark-clr);
     color: var(--orange-clr);
-    border-radius: 16px;
-    margin: auto;
+    border-radius: 8px;
 }
 
 .submit:hover {
