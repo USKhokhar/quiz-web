@@ -129,17 +129,6 @@ const counterEl = document.querySelector('.counter');
 const startTime = 5;
 let totalTime = startTime*60;
 
-
-updateTimer = () => {
-    const minuteJs = Math.floor(totalTime/60);
-    let secondJs = totalTime%60;
-    (secondJs < 10) ? (counterEl.innerHTML = `0${minuteJs} : 0${secondJs}`) : counterEl.innerHTML = `0${minuteJs} : ${secondJs}`;
-    totalTime--;
-    if(totalTime < 0){
-        counterEl.innerHTML = 'OVER'
-    }
-}
-
 // MODALS
 const overlayJs = document.querySelector('.overlay');
 const startModal = document.querySelector('.start-modal');
@@ -159,6 +148,21 @@ confirmModal.style.display = 'none';
 scoreModal.style.display = 'none';
 exitModal.style.display = 'none';
 
+// starting timer
+
+
+updateTimer = () => {
+    const minuteJs = Math.floor(totalTime/60);
+    let secondJs = totalTime%60;
+    (secondJs < 10) ? (counterEl.innerHTML = `0${minuteJs} : 0${secondJs}`) : counterEl.innerHTML = `0${minuteJs} : ${secondJs}`;
+    totalTime--;
+    if(totalTime < 0){
+        counterEl.innerHTML = 'OVER'
+        scoreModal.style.display = 'flex';
+        overlayJs.style.display = 'block';
+    }
+}
+
 // displaying question
 setQuestion = (index) => {
     flagEl.src = questions[index].flag;
@@ -169,6 +173,7 @@ setQuestion = (index) => {
 
     quesNum.innerHTML = index+1;
 }
+
 
 // choosing function
 selectedOpt = () => {
