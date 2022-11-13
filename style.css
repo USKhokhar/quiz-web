@@ -333,12 +333,15 @@ footer {
     color: var(--orange-clr-x);
 }
 
-.previous-btn {
+.previous-btn,
+.next-btn {
     background: var(--dark-clr);
     color: var(--light-clr);
 }
 
-.previous-btn:hover {
+
+.previous-btn:hover,
+.next-btn:hover {
     color: var(--light-clr-x);
 }
 
@@ -355,13 +358,27 @@ footer {
     background: var(--light-clr-x);
 }
 
-.next-btn {
-    background: var(--green-clr);
-    color: var(--light-clr);
-}
+@media screen and (max-width: 375px) {
+    .clear-btn {
+        order: 1;
+    }
 
-.next-btn:hover {
-    background: var(--green-clr-x);
+    .submit {
+        order: 2;
+    }
+
+    .mark-btn {
+        order: 3;
+    }
+
+    .previous-btn {
+        order: 4;
+    }
+
+    .next-btn {
+        order: 5;
+    }
+
 }
 
 /* answer buttons */
@@ -394,14 +411,14 @@ input[type='radio']:checked+label {
 }
 
 .submit {
-    background: var(--dark-clr);
-    color: var(--orange-clr);
+    background: var(--green-clr);
+    color: var(--light-clr);
     border-radius: 8px;
 }
 
 .submit:hover {
-    background: var(--orange-clr);
-    color: var(--dark-clr);
+    background: var(--green-clr-x);
+    color: var(--light-clr-x);
 }
 
 
