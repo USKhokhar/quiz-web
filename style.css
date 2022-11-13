@@ -431,6 +431,14 @@ input[type='radio']:checked+label {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    animation: modalOpen 1s ease-in-out forwards;
+}
+
+@keyframes modalOpen {
+    0% {
+        transform: translate(-50%, -50%) scale(0.1);
+    }
+
 }
 
 .end-modal {
