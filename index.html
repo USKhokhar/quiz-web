@@ -23,6 +23,7 @@
     </header>
 
     <!-- MAIN -->
+    <div class="overlay"></div>
     <main class="flex j-around">
 
         <!-- Sidebar open button -->
@@ -79,22 +80,22 @@
                 <article class="flex row j-between a-center">
                     <div class="att ball"></div>
                     <h4>Attempted</h4>
-                    <h6 class="att-count">--</h6>
+                    <h6 class="att-count"></h6>
                 </article>
                 <article class="flex row j-between a-center">
                     <div class="na ball"></div>
                     <h4>Skipped</h4>
-                    <h6 class="na-count">--</h6>
+                    <h6 class="na-count"></h6>
                 </article>
                 <article class="flex row j-between a-center">
                     <div class="mk ball"></div>
                     <h4>marked</h4>
-                    <h6 class="mk-count">--</h6>
+                    <h6 class="mk-count"></h6>
                 </article>
                 <article class="flex row j-between a-center">
                     <div class="ball"></div>
                     <h4><strong>total</strong></h4>
-                    <h6 class="mk-count">10</h6>
+                    <h6 class="total">10</h6>
                 </article>
             </div>
 
@@ -127,6 +128,24 @@
         <sub>Are you sure you want to leave the quiz?</sub>
         <button class="y-btn">yes</button>
         <button class="n-btn">no</button>
+    </section>
+    
+    <!-- submit confirmation modal -->
+    <section class="modal confirm-modal">
+        <h2>SUBMITTING</h2>
+        <sub>Are you sure you want to submit the quiz?</sub>
+        <button class="y-btn yes">yes</button>
+        <button class="n-btn no">no</button>
+    </section>
+
+    <!-- submit modal -->
+    <section class="modal score-modal">
+        <h2>quiz over</h2>
+        <sub>Thank you for taking the quiz!</sub>
+        <h6>Score : 
+            <span class="score"></span>
+        </h6>
+        <button class="y-btn leave">exit</button>
     </section>
 
     <!-- FOOTER -->

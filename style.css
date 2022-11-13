@@ -54,6 +54,8 @@
 
 :root {
     --dark-clr: #2A2D34;
+    --dark-clr-ll: #6f72798e;
+    --dark-clr-xx: #8197c9de;
     --orange-clr: #F26430;
     --orange-clr-x: #c53400;
     --light-clr: #F2EDEB;
@@ -428,6 +430,7 @@ input[type='radio']:checked+label {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 .end-modal {
@@ -445,7 +448,8 @@ input[type='radio']:checked+label {
 
 .marked,
 .attempted,
-.skipped {
+.skipped,
+.clear {
     color: var(--light-clr);
     font-weight: 500;
     border-radius: 50%;
@@ -464,4 +468,14 @@ input[type='radio']:checked+label {
 
 .skipped {
     background: var(--orange-clr-x);
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: var(--dark-clr-ll);
+    z-index: 1;
+    cursor: no-drop;
 }

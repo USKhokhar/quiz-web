@@ -1,257 +1,320 @@
-
 // QUESTIONS
-
 let questions = [
     {
         flag: 'https://countryflagsapi.com/png/br',
-        answer : [
-            {option: 'Panama', correct: false},
-            {option: 'Argentina', correct: false},
-            {option: 'Brazil', correct: true},
-            {option: 'Bolivia', correct: false},
-        ]
+        
+        a: 'Panama',
+        b: 'Argentina',
+        c: 'Brazil',
+        d: 'Bolivia',
+        ans: 'opt-c'
     },
     {
         flag: 'https://countryflagsapi.com/png/ru',
-        answer : [
-            {option: 'Russia', correct: true},
-            {option: 'France', correct: false},
-            {option: 'Italy', correct: false},
-            {option: 'Greece', correct: false},
-        ]
+        
+        a: 'Russia',
+        b: 'France',
+        c: 'Italy',
+        d: 'Greece',
+        ans: 'opt-a'
     },
     {
         flag: 'https://countryflagsapi.com/png/bt',
-        answer : [
-            {option: 'Nepal', correct: false},
-            {option: 'Bhutan', correct: true},
-            {option: 'Thailand', correct: false},
-            {option: 'Laos', correct: false},
-        ]
+        
+        a: 'Nepal',
+        b: 'Bhutan',
+        c: 'Thailand',
+        d: 'Laos',
+        ans: 'opt-b'
     },
     {
         flag: 'https://countryflagsapi.com/png/png',
-        answer : [
-            {option: 'Panama', correct: false},
-            {option: 'Vietnam', correct: false},
-            {option: 'Papua New Guinea', correct: true},
-            {option: 'North Macedonia', correct: false},
-        ]
+        
+        a: 'Panama',
+        b: 'Vietnam',
+        c: 'Papua New Guinea',
+        d: 'North Macedonia',
+        ans: 'opt-c'
     },
     {
         flag: 'https://countryflagsapi.com/png/vat',
-        answer : [
-            {option: 'Serbia', correct: false},
-            {option: 'Vatican City', correct: true},
-            {option: 'Somalia', correct: false},
-            {option: 'Bolivia', correct: false},
-        ]
+        
+        a: 'Serbia',
+        b: 'Vatican City',
+        c: 'Somalia',
+        d: 'Bolivia',
+        ans: 'opt-b'
     },
     {
         flag: 'https://countryflagsapi.com/png/sl',
-        answer : [
-            {option: 'Sri Lanka', correct: false},
-            {option: 'Zanzibar', correct: false},
-            {option: 'Sierra Leone', correct: true},
-            {option: 'Tanzania', correct: false},
-        ]
+        
+        a: 'Sri Lanka',
+        b: 'Zanzibar',
+        c: 'Sierra Leone',
+        d: 'Tanzania',
+        ans: 'opt-c'
     },
     {
         flag: 'https://countryflagsapi.com/png/mex',
-        answer : [
-            {option: 'Panama', correct: false},
-            {option: 'Canada', correct: false},
-            {option: 'Slovakia', correct: false},
-            {option: 'Mexico', correct: true},
-        ]
+        
+        a: 'Panama',
+        b: 'Canada',
+        c: 'Slovakia',
+        d: 'Mexico',
+        ans: 'opt-d'
     },
     {
         flag: 'https://countryflagsapi.com/png/pan',
-        answer : [
-            {option: 'Panama', correct: true},
-            {option: 'Czech Republic', correct: false},
-            {option: 'Cambodia', correct: false},
-            {option: 'Bolivia', correct: false},
-        ]
+        
+        a: 'Panama',
+        b: 'Czech Republic',
+        c: 'Cambodia',
+        d: 'Bolivia',
+        ans: 'opt-a'
     },
     {
         flag: 'https://countryflagsapi.com/png/fiji',
-        answer : [
-            {option: 'Panama', correct: false},
-            {option: 'Fiji', correct: true},
-            {option: 'French Polynesia', correct: false},
-            {option: 'Tuvalu', correct: false},
-        ]
+        
+        a: 'Panama',
+        b: 'Fiji',
+        c: 'French Polynesia',
+        d: 'Tuvalu',
+        ans: 'opt-b'
     },
     {
         flag: 'https://countryflagsapi.com/png/tuv',
-        answer : [
-            {option: 'British Indian Territory', correct: false},
-            {option: 'Argentina', correct: false},
-            {option: 'Tuvalu', correct: true},
-            {option: 'Spain', correct: false},
-        ]
+        
+        a: 'British Indian Territory',
+        b: 'Argentina',
+        c: 'Tuvalu',
+        d: 'Spain',
+        ans: 'opt-c'
     }
 
 ]
 
-const mainJs = document.querySelector('main');
-const scoreDisplay = document.querySelector('#score-display');
+// QUESTION ELEMENTS
+
+const flagEl = document.querySelector('.flag');
+const quesNum = document.querySelector('.ques-number');
+const optA = document.querySelector(".a");
+const optB = document.querySelector(".b");
+const optC = document.querySelector(".c");
+const optD = document.querySelector(".d");
+const options = document.querySelectorAll('.radio-btn');
+
+let index = 0;
+
+// CONTROL BUTTONS
+const nextBtn = document.querySelector('.next-btn');
+const prevBtn = document.querySelector('.previous-btn');
+const clearBtn = document.querySelector('.clear-btn');
+const markBtn = document.querySelector('.mark-btn');
+
+// SCOREBOARD
+let score = 0;
+const attEl = document.querySelector('.att-count');
+const mkEl = document.querySelector('.mk-count');
+const naEl = document.querySelector('.na-count');
+const numbersEl = document.querySelectorAll('.number');
+const openBtn = document.querySelector('.open');
+const closeBtn = document.querySelector('.close');
+const scoreBoard = document.querySelector('#score-display');
 const quesDisplay = document.querySelector('#ques-display');
+const submitBtn = document.querySelector('.submit');
 
-// QNA
-let flagEl = document.querySelector('.flag');
-const optA = document.querySelector('.a');
-const optB = document.querySelector('.b');
-const optC = document.querySelector('.c');
-const optD = document.querySelector('.d');
-const quesNumber = document.querySelector('.ques-number');
-let quesIndex = 0;
 
-// SCORECARD
-const mkCount = document.querySelector('.mk-count');
-const naCount = document.querySelector('.na-count');
-const attCount = document.querySelector('.att-count');
-const numberEl = document.querySelectorAll('.number');
+// TIMER
+const counterEl = document.querySelector('.counter');
+const startTime = 5;
+let totalTime = startTime*60;
 
-mkCount.innerHTML = 0
-naCount.innerHTML = 0
-attCount.innerHTML = 0
 
-// timer elements
-const counterJs = document.querySelector('.counter');
+updateTimer = () => {
+    const minuteJs = Math.floor(totalTime/60);
+    let secondJs = totalTime%60;
+    (secondJs < 10) ? (counterEl.innerHTML = `0${minuteJs} : 0${secondJs}`) : counterEl.innerHTML = `0${minuteJs} : ${secondJs}`;
+    totalTime--;
+    if(totalTime < 0){
+        counterEl.innerHTML = 'OVER'
+    }
+}
 
-// modals
+// MODALS
+const overlayJs = document.querySelector('.overlay');
 const startModal = document.querySelector('.start-modal');
 const exitModal = document.querySelector('.exit-modal');
-
-// buttons
 const startBtn = document.querySelector('.start-btn');
 const exitBtn = document.querySelector('.exit-btn');
 const yesBtn = document.querySelector('.y-btn');
 const noBtn = document.querySelector('.n-btn');
-const openScoreBtn = document.querySelector('.open');
-const closeScoreBtn = document.querySelector('.close');
-const answerBtn = document.querySelectorAll('.answer-btn');
-const ctrlBtns = document.querySelectorAll('.ctrl-btn');
-const radioBtn = document.querySelectorAll('.radio-btn');
-const labelEl = document.querySelectorAll('label');
-const submitBtn = document.querySelector('.submit');
+const leaveBtn = document.querySelector('.leave');
+const scoreModal = document.querySelector('.score-modal');
+const confirmModal = document.querySelector('.confirm-modal');
+const sBtn = document.querySelector('.yes');
+const nsBtn = document.querySelector('.no');
+const scoreCount = document.querySelector('.score');
 
-// timer
-const startTime = 5;
-let totalTime = startTime * 60;
+confirmModal.style.display = 'none';
+scoreModal.style.display = 'none';
+exitModal.style.display = 'none';
 
-updateCounter = () => {
-    const minute = Math.floor(totalTime / 60);
-    let second = totalTime % 60;
+// displaying question
+setQuestion = (index) => {
+    flagEl.src = questions[index].flag;
+    optA.innerHTML = questions[index].a;
+    optB.innerHTML = questions[index].b;
+    optC.innerHTML = questions[index].c;
+    optD.innerHTML = questions[index].d;
 
-    
-    counterJs.innerHTML = `0${minute} : ${second}`;
-    if(second < 10){
-        counterJs.innerHTML = `0${minute} : 0${second}`;
-    }
-    totalTime--;
+    quesNum.innerHTML = index+1;
 }
 
-// OPENING SCORE DISPLAY ON SMALLER SCREEN
-openScoreBtn.addEventListener('click', () => {
-    scoreDisplay.style.display = 'flex';
-    quesDisplay.style.display = 'none';
-    openScoreBtn.style.display = 'none';
-    closeScoreBtn.style.display = 'block'
-})
-closeScoreBtn.addEventListener('click', () => {
-    scoreDisplay.style.display = 'none';
-    quesDisplay.style.display = 'flex';
-    openScoreBtn.style.display = 'block';
-    closeScoreBtn.style.display = 'none'
+// choosing function
+selectedOpt = () => {
+    let selected;
+    options.forEach((opt) => {
+        if(opt.checked){
+            selected = opt.id;
+        }
+    })
+
+    return selected;
+}
+
+// next button
+nextBtn.addEventListener('click', () => {
+    const choice = selectedOpt()
+    
+    options.forEach((opt) => {
+        if(opt.checked){
+            attEl.innerHTML++;
+            opt.checked = false;
+            numbersEl[quesNum.innerHTML-1].classList.add('attempted')
+            numbersEl[quesNum.innerHTML-1].classList.remove('marked')
+        } 
+    });
+    
+    if(choice === questions[index].ans){
+        score++;
+    };
+    
+    index++
+    if(index > 9){
+        index = 9;
+    };
+    setQuestion(index);
+
+    console.log( choice, score);
 })
 
-// START MODAl
-window.addEventListener("load", () => {
-    mainJs.style.opacity = '0.5';
-    exitModal.style.display = 'none';
-});
+// previous button
+prevBtn.addEventListener('click', () => {
+   index--;
+    if(index < 0){
+        index = 0;
+    }
+    setQuestion(index);
+})
+
+// clear button
+clearBtn.addEventListener('click', () =>{
+
+    if(numbersEl[quesNum.innerHTML-1].classList.contains('attempted')){
+         numbersEl[quesNum.innerHTML-1].classList.remove('attempted');
+         attEl.innerHTML--;
+    }
+    if(numbersEl[quesNum.innerHTML-1].classList.contains('marked')){
+        numbersEl[quesNum.innerHTML-1].classList.remove('marked');
+        mkEl.innerHTML--;
+    }
+    // numbersEl[quesNum.innerHTML-1].classList.remove('attempted');
+})
+
+// mark button
+
+markBtn.addEventListener('click', () => {
+    numbersEl[quesNum.innerHTML-1].classList.add('marked');
+    mkEl.innerHTML++;
+    index++
+    setQuestion(index);
+})
+
+// Number Navigation
+numbersEl.forEach((num) => {
+    num.addEventListener('click', () => {
+        index = num.innerHTML-1;
+        setQuestion(index);
+    })
+})
+
+// SCOREBOARD FUNCTIONALITY
+
+openScore = () => {
+    openBtn.style.display = 'none';
+    closeBtn.style.display = 'block';
+    scoreBoard.style.display = 'flex';
+    quesDisplay.style.display = 'none';
+}
+
+closeScore = () => {
+    scoreBoard.style.display = 'none';
+    quesDisplay.style.display = 'flex';
+    openBtn.style.display = 'block';
+    closeBtn.style.display = 'none';
+}
+
+openBtn.addEventListener('click', openScore);
+closeBtn.addEventListener('click', closeScore);
+
+// MODAL FUNCTIONALITY
+
+// start modal
 
 startBtn.addEventListener('click', () => {
-    mainJs.style.opacity = '1';
+    overlayJs.style.display = 'none';
+    setQuestion(index);
+    setInterval(updateTimer, 1000);
     startModal.style.display = 'none';
-    setInterval(updateCounter, 1000);
-    quesIndex = 0;
-    setQues(quesIndex);
-});
+})
 
-// EXIT MODAL
+// exit button
 exitBtn.addEventListener('click', () => {
-    mainJs.style.opacity = '0.5';
+    overlayJs.style.display = 'block';
     exitModal.style.display = 'flex';
 })
 
+yesBtn.addEventListener('click', () => {
+    window.location.replace('./tq.html');
+})
 noBtn.addEventListener('click', () => {
-    mainJs.style.opacity = '1';
+    overlayJs.style.display = 'none';
     exitModal.style.display = 'none';
 })
 
-yesBtn.addEventListener('click', () => {
-    window.location.replace("./tq.html");
-})
+// submit confirmation modal
 
 submitBtn.addEventListener('click', () => {
-    window.location.replace("./tq.html");
+    confirmModal.style.display = 'flex';
+    overlayJs.style.display = 'block';
+    scoreCount.innerHTML = score;
+
 })
 
-const setQues = (e) => {
-    optA.innerHTML = questions[e].answer[0].option;
-    optB.innerHTML = questions[e].answer[1].option;
-    optC.innerHTML = questions[e].answer[2].option;
-    optD.innerHTML = questions[e].answer[3].option;
-    flagEl.src = questions[e].flag
-    quesNumber.innerHTML = e + 1;
-}
+sBtn.addEventListener('click', () =>{
+    confirmModal.style.display = 'none';
+    scoreModal.style.display = 'flex';
+    overlayJs.style.display = 'block';
+    overlayJs.style.background = 'var(--dark-clr-xx)';
+})
 
-// NAVIGATING THROUGH PAGE
+nsBtn.addEventListener('click', () => {
+    confirmModal.style.display = 'none';
+    overlayJs.style.display = 'none';
+})
 
-ctrlBtns.forEach(btn => btn.addEventListener('click', () => {
-    if(btn.classList.contains('next-btn')){
-        quesIndex++
-        if(quesIndex > 9){
-            quesIndex = 9;
-        }
-        if(!numberEl[quesNumber.innerHTML-1].classList.contains('marked')){
-            numberEl[quesNumber.innerHTML-1].classList.add('skipped');
-        }
-        if(numberEl[quesNumber.innerHTML-1].classList.contains('marked')){
-            mkCount.innerHTML++;
-        }
-        if(numberEl[quesNumber.innerHTML-1].classList.contains('skipped')){
-            naCount.innerHTML++;
-        }
-        setQues(quesIndex);
-    }
-    if(btn.classList.contains('previous-btn')){
-        quesIndex--;
-        if(quesIndex < 0){
-            quesIndex = 0;
-        }
-        setQues(quesIndex);
-    }
-    if(btn.classList.contains('mark-btn')){
-        numberEl[quesNumber.innerHTML-1].classList.add('marked');
-    }
-    if(btn.classList.contains('clear-btn')){
-        numberEl[quesNumber.innerHTML-1].classList.remove('marked');
-        numberEl[quesNumber.innerHTML-1].classList.remove('attempted');
-        numberEl[quesNumber.innerHTML-1].classList.remove('skipped');
-    }
-}))
+// score Modal
 
-// OPTIONS
-
-
-// SCORECARD
-
-numberEl.forEach(btn => btn.addEventListener('click', () => {
-    setQues(btn.innerHTML-1);
-    quesNumber.innerHTML = btn.innerHTML
-}))
+leaveBtn.addEventListener('click', () => {
+    window.location.replace('./tq.html');
+})
